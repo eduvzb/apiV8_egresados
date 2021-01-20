@@ -14,6 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['jwt.verify']], function() {
+    
+    Route::get('/estadoFormulario/{id}','App\Http\Controllers\User\EgresadoController@getFormulario');
+
+    Route::post('/formulario','App\Http\Controllers\User\EgresadoController@setFormulario');
+
+    Route::patch('/updateFormulario/{id}','App\Http\Controllers\User\EgresadoController@updateFormulario');
+    
+    Route::get('/getTramites/{id}','App\Http\Controllers\User\EgresadoController@getTramites');
+    
+    Route::post('/postTramite','App\Http\Controllers\User\EgresadoController@setTramite');
+    
+    Route::get('/getCitas/{id}','App\Http\Controllers\User\EgresadoController@getCitas');
 });
+
+Route::post('login','App\Http\Controllers\Auth\User\AuthController@login');
+    
+Route::post('/logout','App\Http\Controllers\Auth\User\AuthController@logout');
+
+Route::post('register','App\Http\Controllers\Auth\User\AuthController@register');
+
+Route::post('reset/password','ForgotUserPasswordController@sendResetLinkEmail');
+
+Route::post('update/password','ForgotUserPasswordController@updatePassword');
