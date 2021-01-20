@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Exports\EgresadosExport;
-use App\Exports\TramitesExport;
-use App\Exports\CitasExport;
-use App\Models\Egresado;
-use App\Models\Tramite;
 use App\Models\Cita;
+use App\Models\Tramite;
+use App\Models\Egresado;
+use App\Exports\CitasExport;
+use Illuminate\Http\Request;
+use App\Exports\TramitesExport;
+use App\Exports\EgresadosExport;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 class DownloadsFilesController extends Controller
