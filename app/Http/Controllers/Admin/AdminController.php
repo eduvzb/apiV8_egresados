@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
+use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Cita;
 use App\Models\Tramite;
@@ -78,7 +78,7 @@ class AdminController extends Controller
     public function getTramites($id)
     {
         $tramites = Tramite::where('egresado_id',$id)->get();
-        return view('tramites.index',['tramites' => $tramites,'id' => $id]);
+        return view('tramites.index',['tramites' => $tramites]);
     }
 
     public function getCreateTramite()
@@ -164,6 +164,7 @@ class AdminController extends Controller
         ]);
         
         $selected = $request->only('option');
+        $fails = false;
         
         $dates = [
             $dateRangeIngreso,
@@ -176,14 +177,10 @@ class AdminController extends Controller
 
         $filterEmails = new Filter();
 
-        if($selected){
+        if($selected)
             $egresadosSelected = $filterEmails->getMailsCheckbox($tramite,$carrera,$dates,$selected);
-            $egresados = $filterEmails->getTramites($tramite,$carrera,$dates);
-        }
-        else{
+        else
             $egresadosSelected = $filterEmails->getMailsRestantes($tramite,$carrera,$dates,$selected);
-            $egresados = $egresadosSelected;
-        }
         
         $data = [
             "mensaje" => $request->mensaje,
@@ -219,10 +216,10 @@ class AdminController extends Controller
                     'hora'  => $request->hora,
                     'asunto' => $request->asunto
                 ]);
+                $fails = true;
             }
         }
-        
-        return redirect()->back();
+        return redirect()->back()->with('status','Se han envíado Correctamente los Correos');
     }
 
     public function finishTramite($id)
@@ -316,6 +313,8 @@ class AdminController extends Controller
 
         if(!$tramite) $tramite = '-';
         if(!$carrera) $carrera = '-';
+
+        return $citas;
 
         return view ('citas.all',[ 
             'citas'    => $citas,
