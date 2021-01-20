@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
-use App\Models\Egresado;
+use App\Models\User;
 use App\Models\Cita;
-use App\Models\ListaTramite;
 use App\Models\Tramite;
-use App\User;
+use App\Models\Egresado;
+use App\Models\ListaTramite;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class EgresadoController extends Controller
 {

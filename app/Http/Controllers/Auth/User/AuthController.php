@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth\User;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\User;
 use JWTAuth;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
