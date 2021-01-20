@@ -90,23 +90,23 @@ Route::middleware('auth')->group( function (){
     Route::get('downloadTramites/{tramite}/{carrera}/{yearIngreso}/{yearEgreso}/
     {dateIngresoRange}/{dateEgresoRange}/{dateIngresoSpe}/{dateEgresoSpe}',[
         'as' => 'download.tramites',
-        'uses' => 'DownloadsFilesController@downloadTramites'
+        'uses' => 'App\Http\Controllers\Admin\DownloadsFilesController@downloadTramites'
     ]);
 
     Route::get('downloadCitas/{tramite}/{carrera}',[
         'as' => 'download.citas',
-        'uses' => 'DownloadsFilesController@downloadCitas'
+        'uses' => 'App\Http\Controllers\Admin\DownloadsFilesController@downloadCitas'
     ]);
 
     Route::get('tramites_emails/{tramite}/{carrera}/{yearIngreso}/{yearEgreso}/
     {dateIngresoRange}/{dateEgresoRange}/{dateIngresoSpe}/{dateEgresoSpe}',[
         'as' => 'tramites_emails',
-        'uses' => 'AdminController@getMails'
+        'uses' => 'App\Http\Controllers\Admin\AdminController@getMails'
     ]);
 
     Route::post('sendEmails/{tramite}/{carrera}/{yearIngreso}/{yearEgreso}/
     {dateIngresoRange}/{dateEgresoRange}/{dateIngresoSpe}/{dateEgresoSpe}',[
         'as'   => 'citar.sendEmail',
-        'uses' => 'AdminController@sendEmails'
+        'uses' => 'App\Http\Controllers\Admin\AdminController@sendEmails'
     ]);
 });
