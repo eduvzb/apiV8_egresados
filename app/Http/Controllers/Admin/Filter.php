@@ -108,6 +108,7 @@ class Filter{
     {
         $citas = Cita::join('tramites','citas.tramite_id','=','tramites.id')
         ->join('egresados','tramites.egresado_id','=','egresados.id')
+        ->select('citas.*','tramites.tipo')
         ->tipo($tramite)
         ->carrera($carrera)
         ->paginate(10);
