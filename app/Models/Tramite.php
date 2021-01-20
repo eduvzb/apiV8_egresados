@@ -47,4 +47,9 @@ class Tramite extends Model
     {
         if($anioEgreso) return $query->whereYear('egresados.fechaEgreso',$anioEgreso);
     }
+
+    public function citas()
+    {
+        return $this->hasMany('App\Models\Cita');
+    }
 }
