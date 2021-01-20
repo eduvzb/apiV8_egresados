@@ -219,10 +219,10 @@
                             <td scope="row">{{$tramite->tipo}}</td>
                             <td scope="row">{{$tramite->carrera}}</td>
                             <td>
-                                <a href="{{route('egresados.tramites',$tramite->id)}}" class="btn btn-outline-info btn-sm">
+                                <a href="{{route('egresados.tramites',$tramite->egresado_id)}}" class="btn btn-outline-info btn-sm">
                                     Ver Trámite
                                 </a>
-                                <a href="{{route('tramite.finish',$tramite->id)}}" class="btn btn-outline-danger btn-sm">
+                                <a href="{{route('tramite.finish',$tramite->egresado_id)}}" class="btn btn-outline-danger btn-sm">
                                     Finalizar
                                 </a>
                             </td>

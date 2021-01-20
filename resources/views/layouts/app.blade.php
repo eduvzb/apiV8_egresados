@@ -112,6 +112,27 @@
 
                 </nav>
                 </div>
+
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
+
+                <div class="sidebar">
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                <i class="fas fa-angle-left right material-icons">admin_panel_settings</i>
+                                    <p>Configuración<i class="fas fa-angle-left right material-icons">admin_panel_settings</i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{url('seetings')}}" class="nav-link">
+                                        <p style="color: #b2f7a9;">Doble Factor de Autenticación</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                    </nav>
+                </div>
                 
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex"></div>
                 

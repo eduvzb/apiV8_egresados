@@ -3,7 +3,7 @@
 @section('content')
 <div class="content-wrapper">
     <div class="content-header">
-        <div class="container col-5">
+        <div class="container col-md-5">
             <div class="card" style="border:1px solid">
                 <div class="card-header">
                     <h2 class="card-title">Crear Nuevo Trámite</h2>

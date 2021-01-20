@@ -88,7 +88,7 @@
                                         </select>
                                         @else
                                         <select onchange="submitForm()" class="form-control" name="yearEgreso" id="">
-                                                    <option value="">Seleccione un Año de Egresoo</option>
+                                                    <option value="">Seleccione un Año de Egreso</option>
                                                     <option value="{{$yearEgresoSelected}}" selected>{{$yearEgresoSelected}}</option>
                                             @foreach($yearsEgreso as $yearEgreso)
                                                 @if($yearEgresoSelected != $yearEgreso)
