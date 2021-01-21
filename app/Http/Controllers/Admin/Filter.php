@@ -105,10 +105,10 @@ class Filter{
     }
 
     public function getAllCitas($tramite,$carrera)
-    {
+    {   
         $citas = Cita::join('tramites','citas.tramite_id','=','tramites.id')
         ->join('egresados','tramites.egresado_id','=','egresados.id')
-        ->select('citas.*','tramites.tipo')
+        ->select('citas.*','tramites.tipo','egresados.noControl','egresados.carrera')
         ->tipo($tramite)
         ->carrera($carrera)
         ->paginate(10);
