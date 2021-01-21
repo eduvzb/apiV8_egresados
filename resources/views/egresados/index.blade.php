@@ -16,14 +16,14 @@
                                 <div class="form-group">
                                     <label>Carreras</label>
                                     @if($career == ' ')
-                                    <select onchange="submitForm()" name="carrera" id="carrera" class="form-control col-md-13">
+                                    <select name="carrera" id="carrera" class="form-control col-md-13">
                                         <option value="">Seleccione una Carrera</option>
                                         @foreach($carreras as $carrera)
                                         <option value="{{$carrera->name}}">{{$carrera->name}}</option>
                                         @endforeach
                                     </select>
                                     @else
-                                    <select onchange="submitForm()" name="carrera" id="carrera" class="form-control col-md-13">
+                                    <select name="carrera" id="carrera" class="form-control col-md-13">
                                         <option value="">Seleccione una Carrera</option>
                                         <option value="{{$career}}" selected>{{$career}}</option>
                                         @foreach($carreras as $carrera)
@@ -52,20 +52,22 @@
 
                             <div class="col-md-2 form-group">
                                 <div class=" text-center">
-                                    <label for="radioSpeci">Año</label>
+                                    <label for="anioSpe">Año
+                                        <input type="radio" id="anioSpe" name="anioSpe">
+                                    </label>
                                 </div>
                                 <div id="divByYear" class="text-center">
-                                    <div class="form-group">
+                                    <div class="form-group" id="divAnioSpeci">
                                         <label for="">Año de Ingreso: </label>
                                             @if($yearIngresoSelected == ' ')
-                                            <select onchange="submitForm()" class="form-control" name="yearIngreso" id="">
+                                            <select onchange="hideFechaEspecifica(1)" class="form-control" name="yearIngreso" id="">
                                                 <option value="">Selecciona Año de Ingreso</option>
                                                 @foreach($yearsIngreso as $yearIngreso)
                                                 <option value="{{$yearIngreso}}">{{$yearIngreso}}</option>
                                                 @endforeach
                                             </select>
                                             @else
-                                            <select onchange="submitForm()" class="form-control" name="yearIngreso" id="">
+                                            <select onchange="hideFechaEspecifica(1)" class="form-control" name="yearIngreso" id="">
                                                 <option value="">Selecciona Año de Ingreso</option>
                                                 <option value="{{$yearIngresoSelected}}" selected>{{$yearIngresoSelected}}</option>
                                                 @foreach($yearsIngreso as $yearIngreso)
@@ -80,14 +82,14 @@
                                     <div>
                                         <label for="">Año de Egreso: </label>
                                         @if($yearEgresoSelected == ' ')
-                                        <select onchange="submitForm()" class="form-control" name="yearEgreso" id="">
+                                        <select onchange="hideFechaEspecifica(1)" class="form-control" name="yearEgreso" id="">
                                             <option value="">Seleccione un Año de Egreso</option>
                                             @foreach($yearsEgreso as $yearEgreso)
                                             <option value="{{$yearEgreso}}">{{$yearEgreso}}</option>
                                             @endforeach
                                         </select>
                                         @else
-                                        <select onchange="submitForm()" class="form-control" name="yearEgreso" id="">
+                                        <select onchange="hideFechaEspecifica(1)" class="form-control" name="yearEgreso" id="">
                                                     <option value="">Seleccione un Año de Egreso</option>
                                                     <option value="{{$yearEgresoSelected}}" selected>{{$yearEgresoSelected}}</option>
                                             @foreach($yearsEgreso as $yearEgreso)
@@ -103,34 +105,36 @@
 
                             <div class="col-md-2 form-group">
                                 <div class=" text-center">
-                                    <label for="radioRange">Rango de Fechas</label>
+                                    <label for="radioRange">Rango de Fechas
+                                        <input type="radio" name="radioRange" id="radioRange" onclick="hideFechaEspecifica(0)">
+                                    </label>
                                 </div>
                                 <div id="divRange">
                                     <div id="divRange" class="form-group">
                                         <label for="">Fecha de Ingreso: </label>
-                                        <input value="{{$dateRangeIngreso}}" id="fecha" type="date" class="form-control @error('fecha') is-invalid @enderror" name="fechaIngresoRange">
+                                        <input onchange="hideFechaEspecifica(0)" value="{{$dateRangeIngreso}}" id="fechaIngresoRange" type="date" class="form-control" name="fechaIngresoRange">
                                     </div>
                                     <div>
                                         <label for="">Fecha de Egreso: </label>
-                                        <input value="{{$dateRangeEgreso}}" class="form-control" type="date" name="fechaEgresoRange">
+                                        <input onchange="hideFechaEspecifica(0)" value="{{$dateRangeEgreso}}" class="form-control" type="date" id="fechaEgresoRange" name="fechaEgresoRange">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-2 form-group">
                                 <div class=" text-center">
-                                    <label for="radioSpeci">Fecha Específica
-                                        <input type="radio" name="specificDate" id="radioSpeci" onclick="hideRange()">
+                                    <label for="radioSpe">Fecha Específica
+                                        <input type="radio" name="specificDate" id="radioSpe" onclick="hideRadios()">
                                     </label>
                                 </div>
                                 <div id="divSpeci">
                                     <div class="form-group">
                                         <label for="">Fecha de Ingreso: </label>
-                                        <input value="{{$dateSpeIngreso}}" id="fecha" type="date" class="form-control @error('fecha') is-invalid @enderror" name="fechaIngresoSpe">
+                                        <input value="{{$dateSpeIngreso}}" onchange="hideRadios()" id="fechaIngresoSpe" type="date" class="form-control" name="fechaIngresoSpe">
                                     </div>
                                     <div>
                                         <label for="">Fecha de Egreso: </label>
-                                        <input value="{{$dateSpeEgreso}}" class="form-control" type="date" name="fechaEgresoSpe" id="">
+                                        <input value="{{$dateSpeEgreso}}" onchange="hideRadios()" id="fechaEgresoSpe" type="date" class="form-control" name="fechaEgresoSpe" onchange="hideRadios()">
                                     </div>
                                 </div>
                             </div>
@@ -254,16 +258,17 @@
 @endsection
 
 <script>
-
-    function submitForm(){
-        document.filterform.submit();
+    function hideRadios(){
+        $('#divRange input[type="date"]').val('');
+        document.getElementById("radioRange").checked  = false;
+        document.getElementById("anioSpe").checked  = false;
+        document.getElementById("radioSpe").checked  = true;
     }
-
-    function hideRange(){
-        divRange.style.visibility = 'hidden'
-        divByYear.style.visibility = 'hidden'
-        divSpeci.style.visibility = 'visible'
-        document.getElementById("radioRange").checked = false;
-        document.getElementById("radioByYear").checked = false;
+    
+    function hideFechaEspecifica(e){
+        $('#divSpeci input[type="date"]').val('');
+        document.getElementById("radioSpe").checked  = false;
+        if(e == 1) document.getElementById("anioSpe").checked  = true;
+        else document.getElementById("radioRange").checked  = true;
     }
 </script>
