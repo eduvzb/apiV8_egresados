@@ -86,11 +86,11 @@
                     <table id="example1" class="text-center table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Nombre</th>
                                 <th scope="col">No. Control</th>
                                 <th scope="col">Carrera</th>
                                 <th scope="col">Tŕamite</th>
                                 <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
                                 <th scope="col">Descripción</th>
                             </tr>
                         </thead>
@@ -98,11 +98,11 @@
                         <tbody>
                             @foreach ($citas as $cita)
                             <tr>
-                                <td>{{$cita->name}}</td>
                                 <td>{{$cita->noControl}}</td>
                                 <td>{{$cita->carrera}}</td>
                                 <td>{{$cita->tipo}}</td>
                                 <td>{{$cita->fecha}}</td>
+                                <td>{{$cita->hora}}</td>
                                 <td>{{$cita->descripcion}}</td>
                             </tr>
                             @endforeach
