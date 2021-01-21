@@ -65,6 +65,6 @@ class EgresadosController extends Controller
     {
         $egresado = Egresado::where('id',$id);
         $egresado->delete();
-        return redirect()->route('egresados');
+        return redirect()->route('egresados.filtrar');
     }
 }
