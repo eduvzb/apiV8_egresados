@@ -94,7 +94,7 @@
                                     <td>{{$cita->fecha}}</td>
                                     <td>{{$cita->hora}}</td>
                                     <td>
-                                        <a href="{{route('citas.delete',$cita->id)}}">
+                                        <a onclick="confirmation(event)" href="{{route('citas.delete',$cita->id)}}">
                                             <button class="btn btn-danger btn-sm btn-delete">Eliminar</button>
                                         </a>
                                     </td>
@@ -109,6 +109,47 @@
 </div>
 @endsection
 
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    function confirmation(ev){
+        ev.preventDefault();
+        var url = ev.currentTarget.getAttribute('href');
+        console.log(url);
+        Swal.fire({
+            title: '¿Estás Seguro que deseas eliminar la Cita?',
+            text: "No podrás revertir esta acción!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText:'Cancelar',
+            confirmButtonText: 'Sí, Eliminarla!'
+        }).then((result) => {
+            if (result.value) {
+                axios.get(url).then(result => {
+                    Swal.fire({
+                        title:'Eliminada!',
+                        text:'La cita ha sido eliminada.',
+                        icon:'success',
+                    })
+                    .then(() => {
+                        location.reload();
+                    });
+                })
+                .catch(error => {
+                    Swal.fire(
+                    'Ocurrió un error!',
+                    'La cita no ha sido eliminada.',
+                    'error');
+                });
+            }
+        })
+    }
+</script>
+@endsection
+
 <script>
         function back(){
             window.history.back();
@@ -118,3 +159,4 @@
             document.getElementById('formFile').value=""
         }
 </script>
+

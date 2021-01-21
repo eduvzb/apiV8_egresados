@@ -219,12 +219,18 @@
                             <td scope="row">{{$tramite->tipo}}</td>
                             <td scope="row">{{$tramite->carrera}}</td>
                             <td>
-                                <a href="{{route('egresados.tramites',$tramite->egresado_id)}}" class="btn btn-outline-info btn-sm">
+                                <a href="{{route('egresados.tramites',$tramite->egresado_id)}}" class="btn btn-info btn-sm">
                                     Ver Trámite
                                 </a>
-                                <a href="{{route('tramite.finish',$tramite->egresado_id)}}" class="btn btn-outline-danger btn-sm">
-                                    Finalizar
-                                </a>
+                                @if($tramite->finalizado)
+                                    <a onclick="confirmation(event,true)" href="{{route('tramite.finish',$tramite->id)}}" class="btn btn-success btn-sm">
+                                        Reiniciar
+                                    </a>
+                                @else
+                                    <a onclick="confirmation(event,false)" href="{{route('tramite.finish',$tramite->id)}}" class="btn btn-danger btn-sm">
+                                        Finalizar
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
@@ -238,6 +244,56 @@
     </div>
 </div>
 @endsection
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    function confirmation(ev,estado){
+        if(estado){
+            var mensaje = "Reiniciar";
+            var msj = "Reiniciado";
+        }
+        else{
+            var mensaje = "Concluir";
+            var msj = "Concluido";
+        }
+        ev.preventDefault();
+        var url = ev.currentTarget.getAttribute('href');
+        console.log(url);
+        Swal.fire({
+            title: '¿Estás Seguro que deseas dar ' + mensaje + ' el Trámite?',
+            text: "No podrás revertir esta acción!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText:'Cancelar',
+            confirmButtonText: 'Sí, '+ mensaje + '!'
+        }).then((result) => {
+            if (result.value) {
+                axios.get(url).then(result => {
+                    Swal.fire({
+                        title: msj+'!',
+                        text:'El Trámite ha sido '+msj+'.',
+                        icon:'success',
+                    })
+                    .then(() => {
+                        location.reload();
+                    });
+                })
+                .catch(error => {
+                    Swal.fire(
+                    'Ocurrió un error!',
+                    'El Trámite no ha sido concluido.',
+                    'error');
+                });
+            }
+        })
+    }
+</script>
+@endsection
+
 <script>
     function submitForm(){
         document.filterform.submit();

@@ -194,7 +194,8 @@
                                         <a href="{{route('egresados.tramites', $egresado->id)}}" class="btn btn-info btn-sm">
                                             <abbr title="Ver Trámites"><i class="material-icons">info</i></abbr>
                                         </a>
-                                        <a href="{{route('egresados.delete',$egresado->id)}}" class="btn btn-danger btn-sm">
+                                        
+                                        <a onclick="confirmation(event)" href="{{route('egresados.delete',$egresado->id)}}" class="btn btn-danger btn-sm">
                                             <abbr title="Eliminar Trámite"><i class="material-icons">delete</i></abbr>
                                         </a>
                                     </td>
@@ -210,6 +211,48 @@
     </div>
 </div>
 @endsection
+
+@section('js')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    function confirmation(ev){
+        ev.preventDefault();
+        var url = ev.currentTarget.getAttribute('href');
+        console.log(url);
+        Swal.fire({
+            title: '¿Estás Seguro que deseas eliminar el Egresado?',
+            text: "No podrás revertir esta acción!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText:'Cancelar',
+            confirmButtonText: 'Sí, Eliminar!'
+        }).then((result) => {
+            if (result.value) {
+                axios.get(url).then(result => {
+                    Swal.fire({
+                        title:'Eliminado!',
+                        text:'El Egresado ha sido eliminado.',
+                        icon:'success',
+                    })
+                    .then(() => {
+                        location.reload();
+                    });
+                })
+                .catch(error => {
+                    Swal.fire(
+                    'Ocurrió un error!',
+                    'El Egresado no ha sido eliminado.',
+                    'error');
+                });
+            }
+        })
+    }
+</script>
+@endsection
+
 <script>
 
     function submitForm(){
