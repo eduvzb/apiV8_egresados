@@ -12,13 +12,13 @@
                 <div class="card-body">
                     @if (session('status') == "two-factor-authentication-disabled")
                         <div class="alert alert-success" role="alert">
-                            Se ha Deshailitado el Doble Factor de Autenticación
+                            Se ha Deshabilitado el Doble Factor de Autenticación
                         </div>
                     @endif
 
                     @if (session('status') == "two-factor-authentication-enabled")
                         <div class="alert alert-success" role="alert">
-                            Se ha Hailitado el Doble Factor de Autenticación
+                            Se ha Habilitado el Doble Factor de Autenticación
                         </div>
                     @endif
 
