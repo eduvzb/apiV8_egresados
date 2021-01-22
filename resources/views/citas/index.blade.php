@@ -101,8 +101,8 @@
                                     <td>{{$cita->fecha}}</td>
                                     <td>{{$cita->hora}}</td>
                                     <td>
-                                        <a onclick="confirmation(event)" href="{{route('citas.delete',$cita->id)}}">
-                                            <button class="btn btn-danger btn-sm btn-delete">Eliminar</button>
+                                        <a onclick="confirmation(event)" href="{{route('citas.delete',$cita->id)}}" class="btn btn-danger btn-sm">
+                                        <abbr title="Eliminar Cita"><i class="material-icons">delete</i></abbr>
                                         </a>
                                     </td>
                                 </tr>
@@ -117,7 +117,6 @@
 @endsection
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
     function confirmation(ev){
