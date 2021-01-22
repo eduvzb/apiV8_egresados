@@ -3,7 +3,7 @@
     <main class="container">
         <div class="row">
             <div class="col-md-7 mx-auto">
-                <div class="card card-outline " style="top: -4.0rem;">
+                <div class="card" style="top: -4.0rem;">
                     <div class="card-header">
                         <p class="h3">Enviar Invitación de Registro</p>
                     </div>
@@ -14,7 +14,7 @@
                             <img src="{{url('assets/img/icon.png')}}" style="width:15%;">
                         </div>
 
-                        <p class="h5 text-center mb-1">Correo Electrónico a Invitar</p>
+                        <p class="text-center mb-1">Correo Electrónico a Invitar</p>
 
                         <div class="card-text pt-4">
                             <form method="POST" action="{{ route('sendEmail.register') }}">
@@ -33,7 +33,7 @@
                                     @enderror
                                 </div>
                                 
-                                <div class="    d-flex justify-content-end mb-0">
+                                <div class="d-flex justify-content-end mb-0">
                                     <button type="submit" class="btn btn-primary">
                                         Enviar Link De Invitación
                                     </button>
