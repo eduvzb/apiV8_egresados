@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {return view('welcome');});
-
 Route::get('/','App\Http\Controllers\HomeController@index')->name('dashboard');
 
 Route::view('/seetings', 'home')->middleware(['auth', 'verified']);
@@ -23,15 +20,15 @@ Route::view('/profile/edit', 'profile.edit')->middleware('auth');
 
 Route::view('/profile/password', 'profile.password')->middleware('auth');
 
-Route::get('/register/{token}','App\Http\Controllers\Auth\RegisterController@showRegisterForm')->name('register.form');
+Route::get('/register/{token}','App\Http\Controllers\Auth\Admin\RegisterController@showRegisterForm')->name('register.form');
 
-Route::post('/register','App\Http\Controllers\Auth\RegisterController@postRegister')->name('register');
+Route::post('/register','App\Http\Controllers\Auth\Admin\RegisterController@postRegister')->name('register');
 
 Route::middleware('auth')->group( function (){
 
-    Route::get('/register','App\Http\Controllers\Auth\RegisterController@getEmailRegister')->name('register.request');
+    Route::get('/register','App\Http\Controllers\Auth\Admin\RegisterController@getEmailRegister')->name('register.request');
     
-    Route::post('/register/email','App\Http\Controllers\Auth\RegisterController@sendEmailRegister')->name('sendEmail.register');
+    Route::post('/register/email','App\Http\Controllers\Auth\Admin\RegisterController@sendEmailRegister')->name('sendEmail.register');
 
     Route::get('egresados','App\Http\Controllers\Admin\EgresadosController@allEgresados')->name('egresados.filtrar');
 
