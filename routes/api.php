@@ -35,6 +35,6 @@ Route::post('/logout','App\Http\Controllers\Auth\User\AuthController@logout');
 
 Route::post('register','App\Http\Controllers\Auth\User\AuthController@register');
 
-Route::post('reset/password','ForgotUserPasswordController@sendResetLinkEmail');
+Route::post('reset/password','App\Http\Controllers\Auth\User\ForgotUserPasswordController@sendResetLinkEmail');
 
-Route::post('update/password','ForgotUserPasswordController@updatePassword');
+Route::post('update/password','App\Http\Controllers\Auth\User\ForgotUserPasswordController@updatePassword');
