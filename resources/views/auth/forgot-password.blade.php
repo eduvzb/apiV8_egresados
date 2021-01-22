@@ -15,6 +15,13 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                
+                    <div class="card-title d-flex justify-content-between">
+                        <img src="{{url('assets/img/tecnm.png')}}" style="width:31%; height: 40%;">
+                        <img src="{{url('assets/img/icon.png')}}" style="width:15%;">
+                    </div>
+                    
+                   
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
