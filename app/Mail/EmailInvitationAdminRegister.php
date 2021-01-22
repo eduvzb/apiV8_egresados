@@ -19,6 +19,7 @@ class EmailInvitationAdminRegister extends Mailable
     public function build()
     {
         return $this->markdown('Email.emailInvitationAdminRegister')
-        ->with('url',$this->url);
+        ->with('url',$this->url)
+        ->subject('Invitación de Registro de Administrador');
     }
 }
