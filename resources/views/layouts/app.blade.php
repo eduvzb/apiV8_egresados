@@ -42,12 +42,6 @@
 
                 <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <!--
-                    <div class="image">
-                    <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    -->
-                    
                 </div>
 
                 <div class = "sidebar">
@@ -142,9 +136,8 @@
                         <li class="nav-item">
                         <i class="nav-icon far fa-circle text-danger material-icons">exit_to_app</i>
                             <a href="{{ route('logout') }}" 
-                            onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                            {{ __('Cerrar Sesion') }}
+                            onclick="logout(event)">
+                            {{ __('Cerrar Sesión') }}
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -162,6 +155,44 @@
     @yield('js')
 </body>
 </html>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+<script>
+    function logout(ev){
+        ev.preventDefault();
+        var url = ev.currentTarget.getAttribute('href');
+        console.log(url);
+        Swal.fire({
+            title: '¿Estás Seguro que deseas Cerrar Sesión?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText:'Cancelar',
+            confirmButtonText: 'Sí, Cerrar Sesión!'
+        }).then((result) => {
+            if (result.value) {
+                axios.post(url).then(result => {
+                    Swal.fire({
+                        title:'Adios!',
+                        text:'Sesión Cerrada.',
+                        icon:'success',
+                    })
+                    .then(() => {
+                        location.reload();
+                    });
+                })
+                .catch(error => {
+                    Swal.fire(
+                    'Ocurrió un error!',
+                    'No se ha podido Cerrar Sesión',
+                    'error');
+                });
+            }
+        })
+    }
+</script>
 
 <script src="/js/app.js"></script>
 
