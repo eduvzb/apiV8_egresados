@@ -34,14 +34,17 @@ class CitasExport implements FromCollection,WithHeadings,WithMapping,ShouldAutoS
             $citas->noControl,
             $citas->movil,
             $citas->telefono_casa,
+            $citas->email,
             $citas->email_alternativo,
             $citas->carrera,
             $citas->fechaIngreso,
             $citas->fechaEgreso,
             $citas->tipo,
+            $citas->descripcion,
+            $citas->asunto,
             $citas->fecha,
             $citas->hora,
-            $citas->descripcion
+            
         ];
     }
 
@@ -54,14 +57,16 @@ class CitasExport implements FromCollection,WithHeadings,WithMapping,ShouldAutoS
             'Número de Control',
             'Teléfono Móvil',
             'Teléfono de Casa',
+            'Email Principal',
             'Email Alternativo',
             'Carrera',
             'Fecha de Ingreso',
             'Fecha de Egreso',
             'Trámite',
+            'Descripción',
+            'Asunto',
             'Fecha',
             'Hora',
-            'Descripción'
         ];
     }
 }
