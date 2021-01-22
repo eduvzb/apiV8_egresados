@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
 
-            <div class="card" style="border:1px solid">
+            <div class="card">
                 <div class="card-header">
                     <h2 class="card-title">Nueva Cita</h2>
                 </div>
@@ -81,7 +80,7 @@
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Enviar</button>
-                                <a onclick="back()" class="btn btn-danger btn-delete">Cancelar</a>
+                                <a onclick="back()" class="btn btn-danger" style="color: white;">Cancelar</a>
                             </div>
                         </div>
                 </div>

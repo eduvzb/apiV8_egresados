@@ -5,7 +5,7 @@
     <div class="content-header">
         <div class="container-fluid">
             
-            <div class="card" style="border:1px solid">
+            <div class="card">
                 <div class="card-header">
                     <h2 class="card-title">Filtrar</h2>
                     <form name="filterform" action="{{route('citas.filtrar')}}">
