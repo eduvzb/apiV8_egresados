@@ -39,7 +39,6 @@ class ForgotUserPasswordController extends Controller
 
     public function updatePassword(Request $request)
     {
-        $password = $request->password;
         $tokenData = DB::table('password_resets')->where('token',$request->token)->where('email',$request->email)->first();
         
         if (!$tokenData)
