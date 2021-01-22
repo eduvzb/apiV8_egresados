@@ -3,7 +3,7 @@
     <main class="container">
         <div class="row">
             <div class="col-md-7 mx-auto">
-                <div class="card card-outline" style="top: -4.0rem;">
+                <div class="card" style="top: -4.0rem;">
                 
                     <div class="card-header">
                         <p class="h3">Registro de Usuario</p>
@@ -15,7 +15,7 @@
                             <img src="{{url('assets/img/tecnm.png')}}" style="width:31%; height: 40%;">
                             <img src="{{url('assets/img/icon.png')}}" style="width:15%;">
                         </div>
-                        <p class="h5 text-center mb-0">Correo Electrónico y Contraseña</p>
+                        <p class="text-center mb-0">Correo Electrónico y Contraseña</p>
 
                         <div class="card-text pt-4">
                             <form method="POST" action="{{ route('register') }}">
