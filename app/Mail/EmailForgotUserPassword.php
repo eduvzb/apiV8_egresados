@@ -20,6 +20,7 @@ class EmailForgotUserPassword extends Mailable
     public function build()
     {
         return $this->markdown('Email.emailForgotUserPassword')
-        ->with('token',$this->token);
+        ->with('token',$this->token)
+        ->subject('Recuperación de Contraseña');
     }
 }
