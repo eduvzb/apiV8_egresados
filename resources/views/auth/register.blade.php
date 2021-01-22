@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/css/app.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
+<body>
+    <div class="navbar  navbar-dark bg-primary navbar-expand-lg" style="height: 100px;"></div>
 
     <div class="register-box">
         <div class="card card-outline card-primary">
