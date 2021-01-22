@@ -123,14 +123,14 @@ class Filter{
         
         foreach($yearsIngreso as $year){
             $yearIngreso = Carbon::createFromFormat('Y-m-d',$year->fechaIngreso)->year;
-            if(!array_search($yearIngreso,$arrayYearsIngreso))
-                array_push($arrayYearsIngreso,$yearIngreso);
+            if(!in_array($yearIngreso,$arrayYearsIngreso))
+                array_push($arrayYearsIngreso,$yearIngreso);  
         }
         rsort($arrayYearsIngreso);
         return $arrayYearsIngreso;
     }
 
-    public function getYearsEgreso(Type $var = null)
+    public function getYearsEgreso()
     {
         
         $yearsEgreso = Egresado::select('fechaEgreso')->get();
@@ -138,7 +138,7 @@ class Filter{
 
         foreach($yearsEgreso as $year){
             $yearEgreso = Carbon::createFromFormat('Y-m-d',$year->fechaEgreso)->year;
-            if(!array_search($yearEgreso,$arrayYearsEgresado))
+            if(!in_array($yearEgreso,$arrayYearsEgresado))
                 array_push($arrayYearsEgresado,$yearEgreso);
         }
         rsort($arrayYearsEgresado);
