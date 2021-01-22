@@ -16,7 +16,7 @@
                                     <div class="col-md-6 form-group">
                                         <div class="form-group">
                                             <label for="">Trámites</label>
-                                            @if($tramiteS == '-')
+                                            @if($tramiteS == ' ')
                                             <select onchange="submitForm()" name="tramite" id="tramite" class="custom-select">
                                                 <option value="">Seleccione un Trámite</option>
                                                 @foreach($tramites as $tramite)
@@ -25,7 +25,7 @@
                                             </select>
                                             @else
                                             <select onchange="submitForm()" name="tramite" id="tramite" class="custom-select">
-                                                <option value="">Seleccione un trámite</option>
+                                                <option value="">Seleccione un Trámite</option>
                                                 <option value="{{$tramiteS}}" selected>{{$tramiteS}}</option>
                                                 @foreach($tramites as $tramite)
                                                     @if($tramiteS != $tramite->name)
@@ -40,7 +40,7 @@
                                     <div class="col-md-4 form-group">
                                         <div class="form-group">
                                             <label>Carreras</label>
-                                            @if($carreraS == '-')
+                                            @if($carreraS == ' ')
                                             <select onchange="submitForm()" name="carrera" id="carrera" class="custom-select">
                                                 <option value="">Seleccione una Carrera</option>
                                                 @foreach($carreras as $carrera)
