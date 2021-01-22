@@ -1,90 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registro</title>
-
-    <link rel="stylesheet" href="/css/app.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-    <div class="navbar  navbar-dark bg-primary navbar-expand-lg" style="height: 100px;"></div>
-
-    <div class="register-box">
-        <div class="card card-outline card-primary">
+@extends('layouts.nav')
+@section('content')
+    <main class="container">
+        <div class="row">
+            <div class="col-md-7 mx-auto">
+                <div class="card card-outline" style="top: -4.0rem;">
+                
+                    <div class="card-header">
+                        <p class="h3">Registro de Usuario</p>
+                    </div>
             
-            <div class="card-header text-center">
-                <a class="h1"><b>Registro de Usuario</b></a>
-            </div>
-        
-            <div class="card-body">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
-                <p class="register-box-msg">Correo Electrónico y Contraseña</p>
+                    <div class="card-body">
 
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <input type="hidden" name="token" value="{{ $token }}">
-                    <div class="input-group mb-3">
-                        <input id="email" placeholder="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autofocus>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="material-icons">email</span>
-                            </div>
+                        <div class="card-title d-flex justify-content-between">
+                            <img src="{{url('assets/img/tecnm.png')}}" style="width:31%; height: 40%;">
+                            <img src="{{url('assets/img/icon.png')}}" style="width:15%;">
                         </div>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                        <p class="h5 text-center mb-0">Correo Electrónico y Contraseña</p>
 
-                    <div class="input-group mb-3">
-                        <input id="password" placeholder="contraseña" type="password" class="form-control @error('password') is-invalid @enderror" autocomplete="new-password" name="password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="material-icons">lock</span>
-                            </div>
-                        </div>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                        <div class="card-text pt-4">
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <input type="hidden" name="token" value="{{ $token }}">
+                                <div class="input-group mb-3">
+                                    <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required autofocus>
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="material-icons">email</span>
+                                        </div>
+                                    </div>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
-                    <div class="input-group mb-3">
-                        <input id="password-confirm" placeholder="repetir contraseña" type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="current-password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="material-icons">lock</span>
-                            </div>
-                        </div>
-                        @error('password-confirm')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+                                <div class="input-group mb-3">
+                                    <input id="password" placeholder="Contraseña" type="password" class="form-control @error('password') is-invalid @enderror" autocomplete="new-password" name="password">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="material-icons">lock</span>
+                                        </div>
+                                    </div>
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
-                    
-                    <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                Registrar
-                            </button>
+                                <div class="input-group mb-3">
+                                    <input id="password-confirm" placeholder="Repetir Contraseña" type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="current-password">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="material-icons">lock</span>
+                                        </div>
+                                    </div>
+                                    @error('password-confirm')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                
+                                <div class="d-flex justify-content-end mb-0">
+                                    <button type="submit" class="btn btn-primary">
+                                        Registrar
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-    
-
-<script src="/js/app.js"></script>
-</body>
-</html>
+    </main>
+@endsection
