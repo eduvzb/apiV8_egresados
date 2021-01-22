@@ -57,7 +57,7 @@
                                     </label>
                                 </div>
                                 <div id="divByYear" class="text-center">
-                                    <div class="form-group" id="divAnioSpeci">
+                                    <div class="form-group" id="divAnio">
                                         <label for="">Año de Ingreso: </label>
                                             @if($yearIngresoSelected == ' ')
                                             <select onchange="hideFechaEspecifica(1)" class="form-control" name="yearIngreso" id="">
@@ -79,7 +79,7 @@
                                             @endif
                                     </div>
 
-                                    <div>
+                                    <div class="form-group" id="divAnio">
                                         <label for="">Año de Egreso: </label>
                                         @if($yearEgresoSelected == ' ')
                                         <select onchange="hideFechaEspecifica(1)" class="form-control" name="yearEgreso" id="">
@@ -259,6 +259,7 @@
 <script>
     function hideRadios(){
         $('#divRange input[type="date"]').val('');
+        $("#divAnio select").val('');
         document.getElementById("radioRange").checked  = false;
         document.getElementById("anioSpe").checked  = false;
         document.getElementById("radioSpe").checked  = true;
