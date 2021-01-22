@@ -179,8 +179,8 @@ class CitasController extends Controller
         $carreras = ListaCarrera::all();
         $tramites = ListaTramite::all();
 
-        if(!$tramite) $tramite = '-';
-        if(!$carrera) $carrera = '-';
+        if(!$tramite) $tramite = ' ';
+        if(!$carrera) $carrera = ' ';
 
         return view ('citas.all',[ 
             'citas'    => $citas,

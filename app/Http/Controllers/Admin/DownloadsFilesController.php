@@ -65,10 +65,10 @@ class DownloadsFilesController extends Controller
     }
 
     public function downloadCitas($tramite,$carrera)
-    {
+    {        
         if($tramite == " ") $tramite = "";
         if($carrera == " ") $carrera = "";
-        
+
         $citas = Cita::join('tramites','citas.tramite_id','=','tramites.id')
         ->join('egresados','tramites.egresado_id','=','egresados.id')
         ->tipo($tramite)
