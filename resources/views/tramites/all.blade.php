@@ -246,7 +246,6 @@
 @endsection
 
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
     function confirmation(ev,estado){
@@ -262,7 +261,7 @@
         var url = ev.currentTarget.getAttribute('href');
         console.log(url);
         Swal.fire({
-            title: '¿Estás Seguro que deseas dar ' + mensaje + ' el Trámite?',
+            title: '¿Estás Seguro que deseas ' + mensaje + ' el Trámite?',
             text: "No podrás revertir esta acción!",
             icon: 'warning',
             showCancelButton: true,

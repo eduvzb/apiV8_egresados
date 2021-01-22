@@ -55,7 +55,7 @@
                                             Citar
                                         </a>
 
-                                        <a href="{{route('tramites.delete',$tramite->id)}}" class="btn btn-danger btn-sm btn-delete">
+                                        <a onclick="confirmation(event)" href="{{route('tramites.delete',$tramite->id)}}" class="btn btn-danger btn-sm btn-delete">
                                             Eliminar
                                         </a>
                                     </td>
@@ -70,4 +70,45 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+    function confirmation(ev){
+        ev.preventDefault();
+        var url = ev.currentTarget.getAttribute('href');
+        console.log(url);
+        Swal.fire({
+            title: '¿Estás Seguro que deseas eliminar el Trámite?',
+            text: "No podrás revertir esta acción!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText:'Cancelar',
+            confirmButtonText: 'Sí, Eliminar!'
+        }).then((result) => {
+            if (result.value) {
+                axios.get(url).then(result => {
+                    Swal.fire({
+                        title:'Eliminado!',
+                        text:'El Trámite ha sido eliminado.',
+                        icon:'success',
+                    })
+                    .then(() => {
+                        location.reload();
+                    });
+                })
+                .catch(error => {
+                    Swal.fire(
+                    'Ocurrió un error!',
+                    'El Trámite no ha sido eliminado.',
+                    'error');
+                });
+            }
+        })
+    }
+</script>
+
 @endsection
